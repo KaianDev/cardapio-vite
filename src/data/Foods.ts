@@ -3,7 +3,7 @@ import { AddForm } from "@/lib/FormSchema";
 import axios from "axios";
 
 const req = axios.create({
-  baseURL: "https://localhost:8080",
+  baseURL: "http://localhost:8080",
 });
 
 export const addFood = async (data: AddForm) => {

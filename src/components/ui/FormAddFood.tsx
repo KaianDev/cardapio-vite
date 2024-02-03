@@ -14,14 +14,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import { Label } from "./label";
 import { Input } from "./input";
-import { AddForm, formSchema } from "@/lib/FormSchema";
+import { AddForm, formSchemaAddFood } from "@/lib/FormSchema";
 
 type Props = {
   onSubmit: (data: AddForm) => void;
 };
 
 export const FormAddFood = ({ onSubmit }: Props) => {
-  const form = useForm<AddForm>({ resolver: zodResolver(formSchema) });
+  const form = useForm<AddForm>({ resolver: zodResolver(formSchemaAddFood) });
 
   const submitForm = (data: AddForm) => {
     onSubmit(data);
@@ -36,7 +36,7 @@ export const FormAddFood = ({ onSubmit }: Props) => {
           Adicionar
         </Button>
       </DialogTrigger>
-      <DialogContent>
+      <DialogContent className="max-w-xs sm:max-w-xl">
         <DialogHeader>
           <DialogTitle>Adicionar Comida</DialogTitle>
         </DialogHeader>
@@ -68,12 +68,12 @@ export const FormAddFood = ({ onSubmit }: Props) => {
           </div>
           <DialogFooter>
             <DialogClose asChild>
+              <Button type="submit">Cadastrar</Button>
+            </DialogClose>
+            <DialogClose asChild>
               <Button type="button" variant="destructive">
                 Cancelar
               </Button>
-            </DialogClose>
-            <DialogClose asChild>
-              <Button type="submit">Cadastrar</Button>
             </DialogClose>
           </DialogFooter>
         </form>
